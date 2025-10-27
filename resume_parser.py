@@ -8,7 +8,8 @@ from PIL import Image
 import google.generativeai as genai
 
 # Set up Gemini API key
-genai.configure(api_key="AIzaSyBtiK0Q_tYcqTFe1IzN_fJanYuJsmp77uA")
+
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 def pdf_to_images(file_path):
     """Convert PDF pages to images for OCR."""
