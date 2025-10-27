@@ -27,11 +27,11 @@ Extract student information from resumes sent via WhatsApp using Twilio, Flask, 
 ### Option 1: Send Plain Text
 Simply paste or type the resume content in WhatsApp:
 ```
-DHANESH CHINTALA
-Email: 22311a1217@it.sreenidhi.edu.in
-Mobile: 9492704123
-CGPA: 8.17
-College: Sreenidhi Institute of Science and Technology
+bobby
+Email: bobby@hydi,com
+Mobile: 9876543210
+CGPA: 10
+College: XYZIT
 ```
 
 ### Option 2: Send PDF or Image

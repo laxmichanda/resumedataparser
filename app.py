@@ -49,6 +49,7 @@ def health_check():
 @app.route("/whatsapp", methods=["GET", "POST"])
 def whatsapp_webhook():
     """Webhook to handle incoming WhatsApp messages via Twilio."""
+    print("twilio webhook triggered")
     if request.method == "GET":
         # Webhook verification for Twilio
         return "Webhook verified"
