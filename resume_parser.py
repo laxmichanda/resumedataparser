@@ -127,7 +127,7 @@ def extract_json_from_response(response_text):
         
         # Extract key-value pairs manually
         result = {}
-        for field in ["Full Name", "Email", "Phone Number", "CGPA", "BTech College Name"]:
+        for field in ["Full Name", "Email", "Phone Number", "CGPA", "BTech College Name", "Skills"]:
             pattern = rf'["\']?{field}["\']?\s*:\s*["\']?([^",\n]+)["\']?'
             match = re.search(pattern, cleaned_text, re.IGNORECASE)
             if match:
@@ -153,11 +153,12 @@ def extract_resume_info(text):
         "Email": "email address or N/A",
         "Phone Number": "mobile/phone number or N/A",
         "CGPA": "CGPA score (e.g., 9.47) or N/A",
-        "BTech College Name": "college/institute name where BTech is being pursued or N/A"
+        "BTech College Name": "college/institute name where BTech is being pursued or N/A",
+        "Skills": "comma-separated list of technical skills, programming languages, tools, frameworks, or N/A"
     }}
 
     Critical instructions:
-    - Extract ONLY these 5 fields. Do not extract skills, experience, or any other information.
+    - Extract ONLY these 6 fields. Do not extract experience, projects, or any other information beyond these fields.
     - Read the ENTIRE resume text from FIRST character to LAST character - scan every line thoroughly
     - Search EVERYWHERE in the text - emails and phone numbers could be:
       * In the header at the top
@@ -171,6 +172,7 @@ def extract_resume_info(text):
     - For CGPA: Search in "Academic Details", "Education", "B.Tech", or anywhere CGPA is mentioned
     - For College Name: Search in "Academic Details", "Education", B.Tech section, or institution name anywhere
     - For Name: Usually at the very top, but search throughout if not found
+    - For Skills: Look for skills under ANY of these section names (including typos and variants): "Skills", "Skillls", "Skils", "Technical Skills", "Key Skills", "Core Skills", "Competencies", "Expertise", "Technologies", "Programming Languages", "Languages & Tools", "Tools", "Tech Stack", or any heading that lists technologies, languages, frameworks, or tools. Extract all technical skills, programming languages, tools, frameworks, and technologies from such sections. Return as a comma-separated string (e.g., "Python, Java, React, SQL, AWS"). If the resume uses a different keyword (e.g. "Abilities", "Proficiencies"), still extract the skill items from that section.
     - If information is in tabular/structured format, extract it from there too
     - Be thorough and check ALL parts of the text - nothing should be missed
     
@@ -222,6 +224,7 @@ def extract_resume_info(text):
                 "Phone Number": "N/A",
                 "CGPA": "N/A",
                 "BTech College Name": "N/A",
+                "Skills": "N/A",
                 "raw_response": response.text[:500]
             }
     except Exception as e:

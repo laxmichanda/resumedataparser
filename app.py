@@ -32,7 +32,8 @@ def ensure_headers():
                     "Email",
                     "Phone Number",
                     "CGPA",
-                    "BTech College Name"
+                    "BTech College Name",
+                    "Skills"
                 ])
                 print("[INFO] Added column headers to Google Sheet")
     except Exception as e:
@@ -166,7 +167,8 @@ def whatsapp_webhook():
                 data.get("Email", "N/A"),
                 data.get("Phone Number", "N/A"),
                 data.get("CGPA", "N/A"),
-                data.get("BTech College Name", "N/A")
+                data.get("BTech College Name", "N/A"),
+                data.get("Skills", "N/A")
             ])
         except Exception as e:
             print(f"[SHEET ERROR] {e}")
@@ -195,7 +197,8 @@ def whatsapp_webhook():
                         data.get("Email", "N/A"),
                         data.get("Phone Number", "N/A"),
                         data.get("CGPA", "N/A"),
-                        data.get("BTech College Name", "N/A")
+                        data.get("BTech College Name", "N/A"),
+                        data.get("Skills", "N/A")
                     ])
                 except Exception as e:
                     print(f"[SHEET ERROR] {e}")

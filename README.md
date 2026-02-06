@@ -61,6 +61,33 @@ ngrok http 5000
 
 5. **Configure Twilio Webhook** to point to your ngrok URL
 
+## Troubleshooting (Windows)
+
+**"ModuleNotFoundError: No module named 'twilio.twiml'"**  
+Install dependencies into the same Python you use to run the app:
+```bash
+python -m pip install -r requirements.txt
+```
+Then run: `python app.py`
+
+**"Permission denied" on venv or pip install**  
+- Close Cursor/IDE and any sync (e.g. pause OneDrive for this folder).
+- Delete the project’s `venv` folder (if it exists), then create a new venv:
+  ```bash
+  python -m venv venv
+  .\venv\Scripts\activate
+  pip install -r requirements.txt
+  python app.py
+  ```
+- If it still fails, run **PowerShell or CMD as Administrator** and run the same commands from the project folder.
+- Alternatively, create the venv outside OneDrive (e.g. `python -m venv C:\zigme-venv`), then:
+  ```bash
+  C:\zigme-venv\Scripts\activate
+  pip install -r requirements.txt
+  cd "c:\Users\laxmi\OneDrive\Desktop\zigme"
+  python app.py
+  ```
+
 ## File Structure
 
 - `app.py` - Flask webhook handler
